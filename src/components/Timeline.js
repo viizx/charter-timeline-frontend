@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import data from "./data.json";
-
-const newData = data;
-JSON.stringify(newData);
 
 class ApexChart extends Component {
   constructor(props) {
@@ -32,7 +28,7 @@ class ApexChart extends Component {
         },
         fill: {
           type: "solid",
-          opacity: 0.5,
+          opacity: 1,
         },
         legend: {
           position: "top",
@@ -83,5 +79,4 @@ class ApexChart extends Component {
     );
   }
 }
-console.log(newData);
 export default ApexChart;
