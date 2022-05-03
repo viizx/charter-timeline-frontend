@@ -1,7 +1,9 @@
+import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
+import Edit from "./Edit";
 
-const ReservationDetails = () => {
+const Reservation = () => {
   const options = { year: "numeric", month: "short", day: "numeric" };
 
   const { id } = useParams();
@@ -43,10 +45,11 @@ const ReservationDetails = () => {
           <div>{reservation.fillColor === "#006066" && "Booked"}</div>
           <div>{reservation.fillColor === "#061137" && "Option"}</div>
           <button onClick={handleClick}>delete</button>
+          <Edit />
         </article>
       )}
     </div>
   );
 };
 
-export default ReservationDetails;
+export default Reservation;
