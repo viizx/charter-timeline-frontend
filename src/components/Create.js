@@ -18,9 +18,9 @@ const Create = () => {
 
   var y = [y1, y2];
   if (reservation === "1") {
-    fillColor = "#90EE90";
+    fillColor = "#006066";
   } else {
-    fillColor = "#03fceb";
+    fillColor = "#061137";
   }
 
   if (ship === "1") {
@@ -62,12 +62,19 @@ const Create = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(input),
       }
-    ).then(() => {
-      console.log("new reservation added");
-      console.log(input);
+    )
+      .then(() => {
+        console.log("new reservation added");
+        console.log(input);
 
-      setIsPending(false);
-    });
+        setIsPending(false);
+      })
+      .then(() => {
+        setEndDate("");
+        setStartDate("");
+        setShip("");
+        setReservation("");
+      });
   };
 
   return (
