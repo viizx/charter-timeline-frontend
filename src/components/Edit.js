@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 // import "rsuite/dist/rsuite.min.css";
 
-const Create = () => {
+const Edit = () => {
+  const { id } = useParams();
   const [isPending, setIsPending] = useState(false);
   const [startDate, setStartDate] = useState([null, null]);
   const [endDate, setEndDate] = useState([null, null]);
@@ -54,15 +56,16 @@ const Create = () => {
     setIsPending(true);
 
     fetch(
-      "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation",
+      "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation/" +
+        id,
       {
-        method: "POST",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(input),
       }
     )
-      .then(() => {
-        console.log("new reservation added");
+      .then((response) => {
+        console.log(response);
         console.log(input);
 
         setIsPending(false);
@@ -131,7 +134,7 @@ const Create = () => {
         <div className="mb-3">
           {!isPending && (
             <button type="submit" className="btn btn-primary">
-              Add Reservation
+              Update
             </button>
           )}
           {isPending && (
@@ -145,4 +148,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Edit;
