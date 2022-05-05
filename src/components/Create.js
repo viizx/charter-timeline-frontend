@@ -77,70 +77,72 @@ const Create = () => {
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            value={ship}
-            placeholder="Select vessel"
-            onChange={(e) => setShip(e.target.value)}
-          >
-            <option defaultValue="">Select vessel</option>
-            <option value="1">Lady Gita</option>
-            <option value="2">Ardura</option>
-            <option value="3">Alba</option>
-            <option value="4">Slano</option>
-            <option value="5">Vito</option>
-            <option value="6">Korab</option>
-            <option value="7">Agape Rose</option>
-            <option value="8">Son De Mar</option>
-          </select>
-        </div>
-        <div className="mb-3">
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            value={reservation}
-            placeholder="Reservation"
-            onChange={(e) => setReservation(e.target.value)}
-          >
-            <option defaultValue="">Select your option</option>
-            <option value="0">Booked</option>
-            <option value="1">Option</option>
-          </select>
-        </div>
-        <div className="mb-3">
-          <input
-            placeholder="Selected date"
-            type="date"
-            className="form-select"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          ></input>
-        </div>
-        <div className="mb-3">
-          <input
-            placeholder="Selected date"
-            type="date"
-            className="form-select"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          {!isPending && (
-            <button type="submit" className="btn btn-primary">
-              Add Reservation
-            </button>
-          )}
-          {isPending && (
-            <button disabled type="submit" className="btn btn-primary">
-              Working...
-            </button>
-          )}
-        </div>
-      </form>
+      <div className="kontejner2">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              value={ship}
+              placeholder="Select vessel"
+              onChange={(e) => setShip(e.target.value)}
+            >
+              <option defaultValue="">Select vessel</option>
+              <option value="1">Lady Gita</option>
+              <option value="2">Ardura</option>
+              <option value="3">Alba</option>
+              <option value="4">Slano</option>
+              <option value="5">Vito</option>
+              <option value="6">Korab</option>
+              <option value="7">Agape Rose</option>
+              <option value="8">Son De Mar</option>
+            </select>
+          </div>
+          <div className="mb-3">
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              value={reservation}
+              placeholder="Reservation"
+              onChange={(e) => setReservation(e.target.value)}
+            >
+              <option defaultValue="">Select your option</option>
+              <option value="0">Booked</option>
+              <option value="1">Option</option>
+            </select>
+          </div>
+          <div className="mb-3">
+            <input
+              placeholder="Selected date"
+              type="date"
+              className="form-select"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            ></input>
+          </div>
+          <div className="mb-3">
+            <input
+              placeholder="Selected date"
+              type="date"
+              className="form-select"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            {!isPending && (
+              <button type="submit" className="btn btn-primary">
+                Add Reservation
+              </button>
+            )}
+            {isPending && (
+              <button disabled type="submit" className="btn btn-primary">
+                Working...
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

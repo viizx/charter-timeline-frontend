@@ -4,22 +4,22 @@ import ReservationList from "./components/ReservationList";
 import Reservation from "./components/Reservation";
 import Create from "./components/Create";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <Navbar />
         <Switch>
           <Route exact path="/">
             <Timeline />
           </Route>
           <Route exact path="/reservations">
+            <Create />
             <ReservationList />
           </Route>
-          <Route exact path="/reservations/create">
-            <Create />
-          </Route>
-          <Route exact path="/reservations/:id">
+          <Route path="/reservations/:id">
             <Reservation />
           </Route>
         </Switch>

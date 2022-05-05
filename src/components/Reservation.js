@@ -25,29 +25,54 @@ const Reservation = () => {
         method: "DELETE",
       }
     ).then(() => {
-      history.push("/");
+      history.push(0);
     });
   };
 
   return (
-    <div className="reservation-details">
-      {isPending && <div>Loading...</div>}
-      {error && <div>{error}</div>}
-      {reservation && (
-        <article>
-          <div>{reservation.x}</div>
-          <div className="container">
-            {new Date(reservation.y[0]).toLocaleDateString("en-US", options)}
+    <div className="kontejner2">
+      <div className="reservation-details">
+        {isPending && <div>Loading...</div>}
+        {error && <div>{error}</div>}
+        {reservation && (
+          <div className="row">
+            <div className="col-sm">
+              <div className="container">{reservation.x}</div>
+            </div>
+            <div className="col-sm">
+              <div className="container">
+                {reservation.fillColor === "#006066" && "Option"}
+                {reservation.fillColor === "#061137" && "Booked"}
+              </div>
+            </div>
+            <div className="col-sm">
+              <div className="container">
+                {new Date(reservation.y[0]).toLocaleDateString(
+                  "en-US",
+                  options
+                )}
+              </div>
+            </div>
+            <div className="col-sm">
+              <div className="container">
+                {new Date(reservation.y[1]).toLocaleDateString(
+                  "en-US",
+                  options
+                )}
+              </div>
+            </div>
+
+            <div className="col-sm">
+              <div className="container">
+                <button onClick={handleClick} className="btn btn-danger">
+                  Delete
+                </button>
+              </div>
+            </div>
+            <Edit props={reservation} />
           </div>
-          <div className="container">
-            {new Date(reservation.y[1]).toLocaleDateString("en-US", options)}
-          </div>
-          <div>{reservation.fillColor === "#006066" && "Booked"}</div>
-          <div>{reservation.fillColor === "#061137" && "Option"}</div>
-          <button onClick={handleClick}>delete</button>
-          <Edit />
-        </article>
-      )}
+        )}
+      </div>
     </div>
   );
 };

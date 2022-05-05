@@ -34,6 +34,13 @@
   -ms-flex-item-align: center;
   border: 3px solid#0275d8;
   border-radius: 10px;
+  margin: 3rem;
+}
+.kontejner2 {
+  align-content: center;
+  text-align: center;
+  -ms-flex-item-align: center;
+  margin: 3rem;
 }
 
 .novi-red {

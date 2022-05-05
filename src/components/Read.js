@@ -17,9 +17,7 @@ const Read = ({ reservations }) => {
       {reservations.map((reservation) => (
         <div key={reservation._id}>
           <form>
-            <a
-              href={`https://port-3001-js-practice-vice889681.codeanyapp.com/reservations/${reservation._id}`}
-            >
+            <Link to={`reservations/${reservation._id}`}>
               <div className="novi-red">
                 <div className="row">
                   <div className="col-sm">
@@ -43,7 +41,7 @@ const Read = ({ reservations }) => {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           </form>
         </div>
       ))}
