@@ -47,33 +47,29 @@ const Create = () => {
     name = "Son De Mar";
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const input = { x, y, fillColor };
 
     setIsPending(true);
 
-    fetch(
+    const response = await fetch(
       "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(input),
       }
-    )
-      .then(() => {
-        console.log("new reservation added");
-        console.log(input);
+    );
 
-        setIsPending(false);
-      })
-      .then(() => {
-        setEndDate("");
-        setStartDate("");
-        setShip("");
-        setReservation("");
-      });
-  };
+    if (response) {
+      setIsPending(false);
+      setEndDate("");
+      setStartDate("");
+      setShip("");
+      setReservation("");
+    }
+}
 
   return (
     <div className="container">
