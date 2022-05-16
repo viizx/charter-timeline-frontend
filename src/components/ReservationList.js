@@ -9,10 +9,10 @@ const ReservationList = () => {
   console.log(reservations);
 
   return (
-    <div className="container">
+    <>
       {isPending && <Loading />}
       {reservations && <Read reservations={reservations} />}
-    </div>
+    </>
   );
 };
 
