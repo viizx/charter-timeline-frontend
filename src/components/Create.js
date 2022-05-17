@@ -142,7 +142,7 @@ const Create = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="container">
           <div className="button">
             {!isPending && (
               <button type="submit" className="btn btn-primary">
