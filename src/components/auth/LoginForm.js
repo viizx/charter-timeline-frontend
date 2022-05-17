@@ -28,54 +28,49 @@ function LoginForm() {
       } else {
         localStorage.setItem("auth-token", response.token);
         localStorage.setItem("user", JSON.stringify(response.user));
-        history.go(0);
+        history.push("/dashboard");
       }
     } catch (error) {
       console.error(error);
     }
   };
   return (
-    <div>
+    <div className="kontejner2">
       <form onSubmit={handleSubmit}>
         <div>
-          <label className="formLabel">Email adresa</label>
+          <label className="formLabel">Email</label>
         </div>
         <input
           className="formItem"
           placeholder="email"
-          id="inputEmailAddress"
           type="email"
+          id="email"
+          name="email"
+          autoComplete="current-email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         ></input>
         <div>
           <div>
-            <label className="formLabel">Šifra</label>
+            <label className="formLabel">Password</label>
           </div>
           <input
             className="formItem"
             placeholder="password"
-            id="inputPassword"
+            id="password"
             type="password"
             value={password}
+            autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         {error && <p className="err">{error}</p>}
-        <div className="container">
-          <button className="loginBtn" type="submit">
+        <div className="button">
+          <button className="btn btn-primary" type="submit">
             Prijavi se
           </button>
         </div>
       </form>
-      <div className="container">
-        <div className="links">
-          <Link to="/register">Nemaš račun? Klikni me!</Link>
-        </div>
-        <div className="links">
-          <Link to="/forgot-password">Zaboravljena lozinka?</Link>
-        </div>
-      </div>
     </div>
   );
 }
