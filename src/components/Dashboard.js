@@ -7,7 +7,6 @@ const Dashboard = () => {
   const { isPending, data: reservations } = useFetch(
     "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation"
   );
-  console.log(reservations);
 
   return (
     <>

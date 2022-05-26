@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 function LoginForm() {
   const history = useHistory();
-  if (localStorage.getItem("auth-token")) history.push("/");
+  if (localStorage.getItem("auth-token")) history.push("/dashboard");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,7 +28,7 @@ function LoginForm() {
       } else {
         localStorage.setItem("auth-token", response.token);
         localStorage.setItem("user", JSON.stringify(response.user));
-        history.push("/dashboard");
+        history.go(0);
       }
     } catch (error) {
       console.error(error);
