@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+.Navbar {
+  display: flex;
+}
+.NavItem {
+  margin: 10px;
+}
 @keyframes noviRed {
   0% {
     background-color: rgba(2, 117, 216, 0);
