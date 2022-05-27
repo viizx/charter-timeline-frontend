@@ -72,91 +72,118 @@ const Create = () => {
   };
 
   return (
-    <div className="kontejner2">
-      <div className="novi-red-head-2">
-        <div className="row">
-          <div className="col-sm">Vessel</div>
-          <div className="col-sm">Reservation type</div>
-          <div className="col-sm">From Date</div>
-          <div className="col-sm">To Date</div>
+    <div className="accordion" id="accordionExample">
+      <div className="accordion-item">
+        <h2 className="accordion-header" id="headingOne">
+          <button
+            className="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Create New Reservation
+          </button>
+        </h2>
+        <div
+          id="collapseOne"
+          className="accordion-collapse collapse show"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
+          <div className="accordion-body">
+              <div className="novi-red-head-2">
+                <div className="row">
+                  <div className="col-sm">Vessel</div>
+                  <div className="col-sm">Reservation type</div>
+                  <div className="col-sm">From Date</div>
+                  <div className="col-sm">To Date</div>
+                </div>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="row">
+                  <div className="col-sm">
+                    <div className="container">
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        value={ship}
+                        placeholder="Select vessel"
+                        onChange={(e) => setShip(e.target.value)}
+                      >
+                        <option defaultValue="">Select vessel</option>
+                        <option value="1">Lady Gita</option>
+                        <option value="2">Ardura</option>
+                        <option value="3">Alba</option>
+                        <option value="4">Slano</option>
+                        <option value="5">Vito</option>
+                        <option value="6">Korab</option>
+                        <option value="7">Agape Rose</option>
+                        <option value="8">Son De Mar</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-sm">
+                    <div className="container">
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        value={reservation}
+                        placeholder="Reservation"
+                        onChange={(e) => setReservation(e.target.value)}
+                      >
+                        <option defaultValue="">Select your option</option>
+                        <option value="0">Booked</option>
+                        <option value="1">Option</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-sm">
+                    <div className="container">
+                      <input
+                        placeholder="Selected date"
+                        type="date"
+                        className="form-select"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="col-sm">
+                    <div className="container">
+                      <input
+                        placeholder="Selected date"
+                        type="date"
+                        className="form-select"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="container">
+                  <div className="button">
+                    {!isPending && (
+                      <button type="submit" className="btn btn-primary">
+                        Add Reservation
+                      </button>
+                    )}
+                    {isPending && (
+                      <button
+                        disabled
+                        type="submit"
+                        className="btn btn-primary"
+                      >
+                        Working...
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </form>
+          </div>
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col-sm">
-            <div className="container">
-              <select
-                className="form-select"
-                aria-label="Default select example"
-                value={ship}
-                placeholder="Select vessel"
-                onChange={(e) => setShip(e.target.value)}
-              >
-                <option defaultValue="">Select vessel</option>
-                <option value="1">Lady Gita</option>
-                <option value="2">Ardura</option>
-                <option value="3">Alba</option>
-                <option value="4">Slano</option>
-                <option value="5">Vito</option>
-                <option value="6">Korab</option>
-                <option value="7">Agape Rose</option>
-                <option value="8">Son De Mar</option>
-              </select>
-            </div>
-          </div>
-          <div className="col-sm">
-            <div className="container">
-              <select
-                className="form-select"
-                aria-label="Default select example"
-                value={reservation}
-                placeholder="Reservation"
-                onChange={(e) => setReservation(e.target.value)}
-              >
-                <option defaultValue="">Select your option</option>
-                <option value="0">Booked</option>
-                <option value="1">Option</option>
-              </select>
-            </div>
-          </div>
-          <div className="col-sm">
-            <div className="container">
-              <input
-                placeholder="Selected date"
-                type="date"
-                className="form-select"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-              ></input>
-            </div>
-          </div>
-          <div className="col-sm">
-            <div className="container">
-              <input
-                placeholder="Selected date"
-                type="date"
-                className="form-select"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="button">
-            {!isPending && (
-              <button type="submit" className="btn btn-primary">
-                Add Reservation
-              </button>
-            )}
-            {isPending && (
-              <button disabled type="submit" className="btn btn-primary">
-                Working...
-              </button>
-            )}
-          </div>
-        </div>
-      </form>
     </div>
   );
 };
