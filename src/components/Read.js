@@ -25,6 +25,7 @@ const Read = ({ reservations }) => {
                   </div>
                   <div className="col-sm">
                     <div className="container">
+                      {reservation.from},{" "}
                       {new Date(reservation.y[0]).toLocaleDateString(
                         "en-US",
                         options
@@ -33,6 +34,7 @@ const Read = ({ reservations }) => {
                   </div>
                   <div className="col-sm">
                     <div className="container">
+                      {reservation.to},{" "}
                       {new Date(reservation.y[1]).toLocaleDateString(
                         "en-US",
                         options
