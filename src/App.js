@@ -9,6 +9,7 @@ import LoginForm from "./components/auth/LoginForm";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   let authObject = JSON.parse(user);
   console.log(authObject);
@@ -17,6 +18,7 @@ function App() {
     let isMounted = true;
     const auth = async () => {
       setUser(localStorage.getItem("user"));
+      setToken(localStorage.getItem("auth-token"));
     };
 
     auth();
@@ -35,9 +37,7 @@ function App() {
             <Timeline />
           </Route>
           <Route exact path="/dashboard">
-            {authObject && authObject.isAdmin && (
-              <Dashboard user={authObject} />
-            )}
+            {token && authObject.isAdmin && <Dashboard user={token} />}
             {!authObject && <LoginForm />}
           </Route>
           <Route path="/reservations/:id">
