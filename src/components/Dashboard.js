@@ -10,7 +10,9 @@ const Dashboard = ({ user }) => {
 
   return (
     <>
-      <Create user={user} />
+      <div className="container">
+        <Create user={user} />
+      </div>
       {isPending && <Loading />}
       {reservations && <Read reservations={reservations} />}
     </>

@@ -92,86 +92,80 @@ const Create = ({ user }) => {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <div className="novi-red-head-2">
-              <div className="row">
-                <div className="col-sm">Vessel</div>
-                <div className="col-sm">Reservation type</div>
-                <div className="col-sm">From Location</div>
-                <div className="col-sm">From Date</div>
-                <div className="col-sm">To Location</div>
-                <div className="col-sm">To Date</div>
-              </div>
-            </div>
             <form onSubmit={handleSubmit}>
-              <div className="row">
-                <div className="col-sm">
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    value={ship}
-                    placeholder="Select vessel"
-                    onChange={(e) => setShip(e.target.value)}
-                  >
-                    <option defaultValue="">Select vessel</option>
-                    <option value="1">Lady Gita</option>
-                    <option value="2">Ardura</option>
-                    <option value="3">Alba</option>
-                    <option value="4">Slano</option>
-                    <option value="5">Vito</option>
-                    <option value="6">Korab</option>
-                    <option value="7">Agape Rose</option>
-                    <option value="8">Son De Mar</option>
-                  </select>
-                </div>
-                <div className="col-sm">
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    value={reservation}
-                    placeholder="Reservation"
-                    onChange={(e) => setReservation(e.target.value)}
-                  >
-                    <option defaultValue="">Select your option</option>
-                    <option value="0">Booked</option>
-                    <option value="1">Option</option>
-                  </select>
-                </div>
-                <div className="col-sm">
-                  <input
-                    placeholder="From Location"
-                    type="text"
-                    className="form-control"
-                    value={fromLocation}
-                    onChange={(e) => setFromLocation(e.target.value)}
-                  />
-                </div>
-                <div className="col-sm">
-                  <input
-                    placeholder="Selected date"
-                    type="date"
-                    className="form-select"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                  ></input>
-                </div>
-                <div className="col-sm">
-                  <input
-                    placeholder="To Location"
-                    type="text"
-                    className="form-control"
-                    value={toLocation}
-                    onChange={(e) => setToLocation(e.target.value)}
-                  />
-                </div>
-                <div className="col-sm">
-                  <input
-                    placeholder="Selected date"
-                    type="date"
-                    className="form-select"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                  />
-                </div>
+              <div>
+                <b>Vessel </b>
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  value={ship}
+                  placeholder="Select vessel"
+                  onChange={(e) => setShip(e.target.value)}
+                >
+                  <option defaultValue="">Select vessel</option>
+                  <option value="1">Lady Gita</option>
+                  <option value="2">Ardura</option>
+                  <option value="3">Alba</option>
+                  <option value="4">Slano</option>
+                  <option value="5">Vito</option>
+                  <option value="6">Korab</option>
+                  <option value="7">Agape Rose</option>
+                  <option value="8">Son De Mar</option>
+                </select>
+              </div>
+              <div>
+                <b>Reservation type </b>
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  value={reservation}
+                  placeholder="Reservation"
+                  onChange={(e) => setReservation(e.target.value)}
+                >
+                  <option defaultValue="">Select your option</option>
+                  <option value="0">Booked</option>
+                  <option value="1">Option</option>
+                </select>
+              </div>
+              <div>
+                <b>From Location </b>
+                <input
+                  placeholder="From Location"
+                  type="text"
+                  className="form-control"
+                  value={fromLocation}
+                  onChange={(e) => setFromLocation(e.target.value)}
+                />
+              </div>
+              <div>
+                <b>From Date </b>
+                <input
+                  placeholder="Selected date"
+                  type="date"
+                  className="form-select"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                ></input>
+              </div>
+              <div>
+                <b>To Location </b>
+                <input
+                  placeholder="To Location"
+                  type="text"
+                  className="form-control"
+                  value={toLocation}
+                  onChange={(e) => setToLocation(e.target.value)}
+                />
+              </div>
+              <div>
+                <b>To Date </b>
+                <input
+                  placeholder="Selected date"
+                  type="date"
+                  className="form-select"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                />
               </div>
               <div className="container">
                 <div className="button">
