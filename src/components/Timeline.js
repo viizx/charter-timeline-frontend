@@ -54,7 +54,6 @@ class ApexChart extends Component {
             ...this.state.options,
           },
         });
-        console.log(this.state.options);
       });
   }
 
