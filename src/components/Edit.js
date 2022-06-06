@@ -81,76 +81,80 @@ const Edit = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="row">
-        <div className="col-sm">
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            // defaultValue={props.x}
-            value={ship}
-            placeholder="Select vessel"
-            onChange={(e) => setShip(e.target.value)}
-          >
-            <option defaultValue="">Select vessel</option>
-            <option value="1">Lady Gita</option>
-            <option value="2">Ardura</option>
-            <option value="3">Alba</option>
-            <option value="4">Slano</option>
-            <option value="5">Vito</option>
-            <option value="6">Korab</option>
-            <option value="7">Agape Rose</option>
-            <option value="8">Son De Mar</option>
-          </select>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="novi-red-edit">
+            <div className="col-sm">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                // defaultValue={props.x}
+                value={ship}
+                placeholder="Select vessel"
+                onChange={(e) => setShip(e.target.value)}
+              >
+                <option defaultValue="">Select vessel</option>
+                <option value="1">Lady Gita</option>
+                <option value="2">Ardura</option>
+                <option value="3">Alba</option>
+                <option value="4">Slano</option>
+                <option value="5">Vito</option>
+                <option value="6">Korab</option>
+                <option value="7">Agape Rose</option>
+                <option value="8">Son De Mar</option>
+              </select>
+            </div>
+            <div className="col-sm">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                // defaultValue={props.fillColor === "#006066" ? "Booked" : "Option"}
+                value={reservation}
+                placeholder="Reservation"
+                onChange={(e) => setReservation(e.target.value)}
+              >
+                <option defaultValue="">Select your option</option>
+                <option value="0">Booked</option>
+                <option value="1">Option</option>
+              </select>
+            </div>
+            <div className="col-sm">
+              <input
+                placeholder="Selected date"
+                type="date"
+                className="form-select"
+                // defaultValue={props.y[0]}
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              ></input>
+            </div>
+            <div className="col-sm">
+              <input
+                placeholder="Selected date"
+                type="date"
+                // defaultValue={props.y[1]}
+                className="form-select"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </div>
+            <div className="col-sm">
+              {!isPending && (
+                <button type="submit" className="btn btn-primary">
+                  Update
+                </button>
+              )}
+              {isPending && (
+                <button disabled type="submit" className="btn btn-primary">
+                  Working...
+                </button>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="col-sm">
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            // defaultValue={props.fillColor === "#006066" ? "Booked" : "Option"}
-            value={reservation}
-            placeholder="Reservation"
-            onChange={(e) => setReservation(e.target.value)}
-          >
-            <option defaultValue="">Select your option</option>
-            <option value="0">Booked</option>
-            <option value="1">Option</option>
-          </select>
-        </div>
-        <div className="col-sm">
-          <input
-            placeholder="Selected date"
-            type="date"
-            className="form-select"
-            // defaultValue={props.y[0]}
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          ></input>
-        </div>
-        <div className="col-sm">
-          <input
-            placeholder="Selected date"
-            type="date"
-            // defaultValue={props.y[1]}
-            className="form-select"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </div>
-        <div className="col-sm">
-          {!isPending && (
-            <button type="submit" className="btn btn-primary">
-              Update
-            </button>
-          )}
-          {isPending && (
-            <button disabled type="submit" className="btn btn-primary">
-              Working...
-            </button>
-          )}
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
