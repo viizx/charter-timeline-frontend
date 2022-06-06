@@ -93,16 +93,17 @@ const Create = ({ user }) => {
         >
           <div className="accordion-body">
             <form onSubmit={handleSubmit}>
-              <div>
+              <div className="mb-3">
                 <b>Vessel </b>
                 <select
                   className="form-select"
                   aria-label="Default select example"
+                  id="selectVessel"
                   value={ship}
                   placeholder="Select vessel"
                   onChange={(e) => setShip(e.target.value)}
                 >
-                  <option defaultValue="">Select vessel</option>
+                  <option defaultValue=""></option>
                   <option value="1">Lady Gita</option>
                   <option value="2">Ardura</option>
                   <option value="3">Alba</option>
@@ -119,10 +120,10 @@ const Create = ({ user }) => {
                   className="form-select"
                   aria-label="Default select example"
                   value={reservation}
-                  placeholder="Reservation"
+                  placeholder=""
                   onChange={(e) => setReservation(e.target.value)}
                 >
-                  <option defaultValue="">Select your option</option>
+                  <option defaultValue=""></option>
                   <option value="0">Booked</option>
                   <option value="1">Option</option>
                 </select>
@@ -130,7 +131,7 @@ const Create = ({ user }) => {
               <div>
                 <b>From Location </b>
                 <input
-                  placeholder="From Location"
+                  placeholder=""
                   type="text"
                   className="form-control"
                   value={fromLocation}
@@ -140,7 +141,7 @@ const Create = ({ user }) => {
               <div>
                 <b>From Date </b>
                 <input
-                  placeholder="Selected date"
+                  placeholder=""
                   type="date"
                   className="form-select"
                   value={startDate}
@@ -150,7 +151,7 @@ const Create = ({ user }) => {
               <div>
                 <b>To Location </b>
                 <input
-                  placeholder="To Location"
+                  placeholder=""
                   type="text"
                   className="form-control"
                   value={toLocation}
@@ -160,7 +161,7 @@ const Create = ({ user }) => {
               <div>
                 <b>To Date </b>
                 <input
-                  placeholder="Selected date"
+                  placeholder=""
                   type="date"
                   className="form-select"
                   value={endDate}
