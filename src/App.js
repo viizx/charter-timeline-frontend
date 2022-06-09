@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect } from "react";
 import Timeline from "./components/Timeline";
 import Dashboard from "./components/Dashboard";
