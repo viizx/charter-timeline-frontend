@@ -5,46 +5,36 @@ const Read = ({ reservations }) => {
   let options = { year: "numeric", month: "short", day: "numeric" };
 
   return (
-    <div className="kontejner">
-      <div className="novi-red-head">
-        <div className="row">
-          <div className="col-sm">Ship</div>
-          <div className="col-sm">From</div>
-          <div className="col-sm">To</div>
-        </div>
+    <div className="text-center	min-h-full items-center justify-center py-12  sm:px-4 md:px-6 lg:px-8">
+      <div className="grid grid-cols-3 gap-6">
+        <div className="col-span-1 sm:col-span-1 py-2">Ship</div>
+        <div className="col-span-1 sm:col-span-1 py-2">From</div>
+        <div className="col-span-1 sm:col-span-1 py-2">To</div>
       </div>
 
       {reservations.map((reservation) => (
         <div key={reservation._id}>
-          <form>
-            <Link to={`reservations/${reservation._id}`}>
-              <div className="novi-red">
-                <div className="row">
-                  <div className="col-sm">
-                    <div className="container">{reservation.x}</div>
-                  </div>
-                  <div className="col-sm">
-                    <div className="container">
-                      {reservation.from},{" "}
-                      {new Date(reservation.y[0]).toLocaleDateString(
-                        "en-US",
-                        options
-                      )}
-                    </div>
-                  </div>
-                  <div className="col-sm">
-                    <div className="container">
-                      {reservation.to},{" "}
-                      {new Date(reservation.y[1]).toLocaleDateString(
-                        "en-US",
-                        options
-                      )}
-                    </div>
-                  </div>
-                </div>
+          <Link to={`reservations/${reservation._id}`}>
+            <div className="grid grid-cols-3 gap-6 hover:bg-gray-200">
+              <div className="col-span-1 sm:col-span-1 py-2">
+                {reservation.x}
               </div>
-            </Link>
-          </form>
+              <div className="col-span-1 sm:col-span-1 py-2">
+                {reservation.from},{" "}
+                {new Date(reservation.y[0]).toLocaleDateString(
+                  "en-US",
+                  options
+                )}
+              </div>
+              <div className="col-span-1 sm:col-span-1 py-2">
+                {reservation.to},{" "}
+                {new Date(reservation.y[1]).toLocaleDateString(
+                  "en-US",
+                  options
+                )}
+              </div>
+            </div>
+          </Link>
         </div>
       ))}
     </div>
