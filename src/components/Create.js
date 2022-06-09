@@ -71,14 +71,14 @@ const Create = ({ user }) => {
   };
 
   return (
-    <div class="container mx-auto py-5 sm:px-3 md:px-100 lg:px-100">
-      <div class="align-content: center px-4">
+    <div className="container mx-auto py-5 sm:px-3 md:px-100 lg:px-100">
+      <div className="align-content: center px-4">
         <form onSubmit={handleSubmit}>
-          <div class="grid grid-cols-6 gap-6">
+          <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-6 py-2">
               <label
                 for="selectVessel"
-                class="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
                 Ship
               </label>
@@ -104,7 +104,7 @@ const Create = ({ user }) => {
             <div className="col-span-6 sm:col-span-6 py-2">
               <label
                 for="reservationType"
-                class="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
                 Reservation Type
               </label>
@@ -124,7 +124,7 @@ const Create = ({ user }) => {
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
                 for="fromLocation"
-                class="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
                 From Location
               </label>
@@ -140,7 +140,7 @@ const Create = ({ user }) => {
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
                 for="startDate"
-                class="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
                 Start Date
               </label>
@@ -156,7 +156,7 @@ const Create = ({ user }) => {
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
                 for="toLocation"
-                class="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
                 To Location
               </label>
@@ -172,7 +172,7 @@ const Create = ({ user }) => {
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
                 for="toDate"
-                class="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
                 To Date
               </label>
