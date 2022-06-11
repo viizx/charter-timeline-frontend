@@ -8,40 +8,22 @@ const Create = ({ user }) => {
   const [reservation, setReservation] = useState("");
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
-  var fillColor = "";
-  var x = "";
+  console.log(ship);
 
   var y1 = new Date(startDate).getTime();
   var y2 = new Date(endDate).getTime();
 
   var y = [y1, y2];
-  if (reservation === "1") {
-    fillColor = "#006066";
-  } else {
-    fillColor = "#061137";
-  }
-
-  if (ship === "1") {
-    x = "Lady Gita";
-  } else if (ship === "2") {
-    x = "Ardura";
-  } else if (ship === "3") {
-    x = "Alba";
-  } else if (ship === "4") {
-    x = "Slano";
-  } else if (ship === "5") {
-    x = "Vito";
-  } else if (ship === "6") {
-    x = "Korab";
-  } else if (ship === "7") {
-    x = "Agape Rose";
-  } else if (ship === "8") {
-    x = "Son De Mar";
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const input = { x, y, fillColor, from: fromLocation, to: toLocation };
+    const input = {
+      x: ship,
+      y,
+      fillColor: reservation,
+      from: fromLocation,
+      to: toLocation,
+    };
 
     setIsPending(true);
     console.log(input);
@@ -91,14 +73,14 @@ const Create = ({ user }) => {
                 onChange={(e) => setShip(e.target.value)}
               >
                 <option defaultValue=""></option>
-                <option value="1">Lady Gita</option>
-                <option value="2">Ardura</option>
-                <option value="3">Alba</option>
-                <option value="4">Slano</option>
-                <option value="5">Vito</option>
-                <option value="6">Korab</option>
-                <option value="7">Agape Rose</option>
-                <option value="8">Son De Mar</option>
+                <option value="Lady Gita">Lady Gita</option>
+                <option value="Ardura">Ardura</option>
+                <option value="Alba">Alba</option>
+                <option value="Slano">Slano</option>
+                <option value="Vito">Vito</option>
+                <option value="Korab">Korab</option>
+                <option value="Agape Rose">Agape Rose</option>
+                <option value="Son De Mar">Son De Mar</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-6 py-2">
@@ -117,8 +99,8 @@ const Create = ({ user }) => {
                 onChange={(e) => setReservation(e.target.value)}
               >
                 <option defaultValue=""></option>
-                <option value="0">Booked</option>
-                <option value="1">Option</option>
+                <option value="#006066">Booked</option>
+                <option value="#061137">Option</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
