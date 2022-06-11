@@ -10,7 +10,7 @@ const Dashboard = ({ user }) => {
 
   return (
     <>
-      <div className="container">
+      <div className="align-content: center">
         <Create user={user} />
       </div>
       {isPending && <Loading />}

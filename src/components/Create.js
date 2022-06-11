@@ -8,40 +8,22 @@ const Create = ({ user }) => {
   const [reservation, setReservation] = useState("");
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
-  var fillColor = "";
-  var x = "";
+  console.log(ship);
 
   var y1 = new Date(startDate).getTime();
   var y2 = new Date(endDate).getTime();
 
   var y = [y1, y2];
-  if (reservation === "1") {
-    fillColor = "#006066";
-  } else {
-    fillColor = "#061137";
-  }
-
-  if (ship === "1") {
-    x = "Lady Gita";
-  } else if (ship === "2") {
-    x = "Ardura";
-  } else if (ship === "3") {
-    x = "Alba";
-  } else if (ship === "4") {
-    x = "Slano";
-  } else if (ship === "5") {
-    x = "Vito";
-  } else if (ship === "6") {
-    x = "Korab";
-  } else if (ship === "7") {
-    x = "Agape Rose";
-  } else if (ship === "8") {
-    x = "Son De Mar";
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const input = { x, y, fillColor, from: fromLocation, to: toLocation };
+    const input = {
+      x: ship,
+      y,
+      fillColor: reservation,
+      from: fromLocation,
+      to: toLocation,
+    };
 
     setIsPending(true);
     console.log(input);
@@ -71,120 +53,141 @@ const Create = ({ user }) => {
   };
 
   return (
-    <div className="accordion" id="accordionExample">
-      <div className="accordion-item">
-        <h2 className="accordion-header" id="headingOne">
-          <button
-            className="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="false"
-            aria-controls="collapseOne"
-          >
-            Create New Reservation
-          </button>
-        </h2>
-        <div
-          id="collapseOne"
-          className="accordion-collapse collapse"
-          aria-labelledby="headingOne"
-          data-bs-parent="#accordionExample"
-        >
-          <div className="accordion-body">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <b>Vessel </b>
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  id="selectVessel"
-                  value={ship}
-                  placeholder="Select vessel"
-                  onChange={(e) => setShip(e.target.value)}
+    <div className="container mx-auto py-5 sm:px-3 md:px-100 lg:px-100">
+      <div className="align-content: center px-4">
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-6 gap-6">
+            <div className="col-span-6 sm:col-span-6 py-2">
+              <label
+                for="selectVessel"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Ship
+              </label>
+              <select
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                aria-label="Default select example"
+                id="selectVessel"
+                value={ship}
+                placeholder="Select vessel"
+                onChange={(e) => setShip(e.target.value)}
+              >
+                <option defaultValue=""></option>
+                <option value="Lady Gita">Lady Gita</option>
+                <option value="Ardura">Ardura</option>
+                <option value="Alba">Alba</option>
+                <option value="Slano">Slano</option>
+                <option value="Vito">Vito</option>
+                <option value="Korab">Korab</option>
+                <option value="Agape Rose">Agape Rose</option>
+                <option value="Son De Mar">Son De Mar</option>
+              </select>
+            </div>
+            <div className="col-span-6 sm:col-span-6 py-2">
+              <label
+                for="reservationType"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Reservation Type
+              </label>
+              <select
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                aria-label="Default select example"
+                value={reservation}
+                id="reservationType"
+                placeholder=""
+                onChange={(e) => setReservation(e.target.value)}
+              >
+                <option defaultValue=""></option>
+                <option value="#006066">Booked</option>
+                <option value="#061137">Option</option>
+              </select>
+            </div>
+            <div className="col-span-6 sm:col-span-3 py-2">
+              <label
+                for="fromLocation"
+                className="block text-sm font-medium text-gray-700"
+              >
+                From Location
+              </label>
+              <input
+                placeholder=""
+                id="fromLocation"
+                type="text"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={fromLocation}
+                onChange={(e) => setFromLocation(e.target.value)}
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-3 py-2">
+              <label
+                for="startDate"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Start Date
+              </label>
+              <input
+                placeholder=""
+                type="date"
+                id="startDate"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              ></input>
+            </div>
+            <div className="col-span-6 sm:col-span-3 py-2">
+              <label
+                for="toLocation"
+                className="block text-sm font-medium text-gray-700"
+              >
+                To Location
+              </label>
+              <input
+                placeholder=""
+                id="toLocation"
+                type="text"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={toLocation}
+                onChange={(e) => setToLocation(e.target.value)}
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-3 py-2">
+              <label
+                for="toDate"
+                className="block text-sm font-medium text-gray-700"
+              >
+                To Date
+              </label>
+              <input
+                placeholder=""
+                type="date"
+                id="toDate"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-6 py-2 px-4 py-3 bg-gray-50 text-right sm:px-6">
+              {!isPending && (
+                <button
+                  type="submit"
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  <option defaultValue=""></option>
-                  <option value="1">Lady Gita</option>
-                  <option value="2">Ardura</option>
-                  <option value="3">Alba</option>
-                  <option value="4">Slano</option>
-                  <option value="5">Vito</option>
-                  <option value="6">Korab</option>
-                  <option value="7">Agape Rose</option>
-                  <option value="8">Son De Mar</option>
-                </select>
-              </div>
-              <div>
-                <b>Reservation type </b>
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  value={reservation}
-                  placeholder=""
-                  onChange={(e) => setReservation(e.target.value)}
+                  Add Reservation
+                </button>
+              )}
+              {isPending && (
+                <button
+                  disabled
+                  type="submit"
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  <option defaultValue=""></option>
-                  <option value="0">Booked</option>
-                  <option value="1">Option</option>
-                </select>
-              </div>
-              <div>
-                <b>From Location </b>
-                <input
-                  placeholder=""
-                  type="text"
-                  className="form-control"
-                  value={fromLocation}
-                  onChange={(e) => setFromLocation(e.target.value)}
-                />
-              </div>
-              <div>
-                <b>From Date </b>
-                <input
-                  placeholder=""
-                  type="date"
-                  className="form-select"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                ></input>
-              </div>
-              <div>
-                <b>To Location </b>
-                <input
-                  placeholder=""
-                  type="text"
-                  className="form-control"
-                  value={toLocation}
-                  onChange={(e) => setToLocation(e.target.value)}
-                />
-              </div>
-              <div>
-                <b>To Date </b>
-                <input
-                  placeholder=""
-                  type="date"
-                  className="form-select"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                />
-              </div>
-              <div className="container">
-                <div className="button">
-                  {!isPending && (
-                    <button type="submit" className="btn btn-primary">
-                      Add Reservation
-                    </button>
-                  )}
-                  {isPending && (
-                    <button disabled type="submit" className="btn btn-primary">
-                      Working...
-                    </button>
-                  )}
-                </div>
-              </div>
-            </form>
+                  Working...
+                </button>
+              )}
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

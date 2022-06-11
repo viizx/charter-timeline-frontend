@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect } from "react";
 import Timeline from "./components/Timeline";
 import Dashboard from "./components/Dashboard";
@@ -31,19 +30,21 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {authObject && authObject.isAdmin && <Navbar />}
-        <Switch>
-          <Route exact path="/">
-            <Timeline />
-          </Route>
-          <Route exact path="/dashboard">
-            {token && authObject.isAdmin && <Dashboard user={token} />}
-            {!authObject && <LoginForm />}
-          </Route>
-          <Route path="/reservations/:id">
-            <Reservation />
-          </Route>
-        </Switch>
+        <div className="bg-gray-50">
+          {authObject && authObject.isAdmin && <Navbar />}
+          <Switch>
+            <Route exact path="/">
+              <Timeline />
+            </Route>
+            <Route exact path="/dashboard">
+              {token && authObject.isAdmin && <Dashboard user={token} />}
+              {!authObject && <LoginForm />}
+            </Route>
+            <Route path="/reservations/:id">
+              <Reservation />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   );
