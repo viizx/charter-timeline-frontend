@@ -17,62 +17,72 @@ const Reservation = () => {
   );
   const history = useHistory();
 
-  const handleClick = () => {
-    fetch(
+  const handleDelete = async () => {
+    const response = await fetch(
       "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation/" +
         id,
       {
         method: "DELETE",
       }
-    ).then(() => {
-      history.push(0);
-    });
+    );
+    if (response) {
+      history.push("/dashboard");
+    }
   };
 
   return (
-    <div className="kontejner2">
-      <div className="reservation-details">
+    <div>
+      <div className="text-center min-h-full items-center justify-center py-12  sm:px-4 md:px-6 lg:px-8">
         {isPending && <div>Loading...</div>}
         {error && <div>{error}</div>}
         {reservation && (
-          <div className="row">
-            <div className="col-sm">
-              <div className="container">{reservation.x}</div>
+          <div>
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-1 sm:col-span-1 py-2">Ship</div>
+              <div className="col-span-1 sm:col-span-1 py-2">From</div>
+              <div className="col-span-1 sm:col-span-1 py-2">To</div>
             </div>
-            <div className="col-sm">
-              <div className="container">
-                {reservation.fillColor === "#006066" && "Option"}
-                {reservation.fillColor === "#061137" && "Booked"}
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-1 sm:col-span-1 py-2">
+                {reservation.x}
               </div>
-            </div>
-            <div className="col-sm">
-              <div className="container">
+              <div className="col-span-1 sm:col-span-1 py-2">
+                {reservation.from},{" "}
                 {new Date(reservation.y[0]).toLocaleDateString(
                   "en-US",
                   options
                 )}
               </div>
-            </div>
-            <div className="col-sm">
-              <div className="container">
+              <div className="col-span-1 sm:col-span-1 py-2">
+                {reservation.to},{" "}
                 {new Date(reservation.y[1]).toLocaleDateString(
                   "en-US",
                   options
                 )}
               </div>
             </div>
-
-            <div className="col-sm">
-              <div className="container">
-                <button onClick={handleClick} className="btn btn-danger">
-                  Delete
+            <div className="col-span-6 sm:col-span-6 py-2 px-4 py-3 bg-gray-50 text-right sm:px-6">
+              {!isPending && (
+                <button
+                  onClick={handleDelete}
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Delete Reservation
                 </button>
-              </div>
+              )}
+              {isPending && (
+                <button
+                  disabled
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Working...
+                </button>
+              )}
             </div>
-            <Edit props={reservation} />
           </div>
         )}
       </div>
+      <Edit props={reservation} />
     </div>
   );
 };

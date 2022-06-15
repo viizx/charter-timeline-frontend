@@ -8,7 +8,6 @@ const Create = ({ user }) => {
   const [reservation, setReservation] = useState("");
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
-  console.log(ship);
 
   var y1 = new Date(startDate).getTime();
   var y2 = new Date(endDate).getTime();
@@ -26,7 +25,6 @@ const Create = ({ user }) => {
     };
 
     setIsPending(true);
-    console.log(input);
 
     const response = await fetch(
       "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation",
@@ -41,7 +39,6 @@ const Create = ({ user }) => {
     );
 
     if (response) {
-      console.log(response);
       setIsPending(false);
       setEndDate("");
       setStartDate("");
