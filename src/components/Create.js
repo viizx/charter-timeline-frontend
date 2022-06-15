@@ -62,7 +62,7 @@ const Create = ({ user }) => {
                 Ship
               </label>
               <select
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 aria-label="Default select example"
                 id="selectVessel"
                 value={ship}
@@ -88,7 +88,7 @@ const Create = ({ user }) => {
                 Reservation Type
               </label>
               <select
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 aria-label="Default select example"
                 value={reservation}
                 id="reservationType"
@@ -111,7 +111,7 @@ const Create = ({ user }) => {
                 placeholder=""
                 id="fromLocation"
                 type="text"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={fromLocation}
                 onChange={(e) => setFromLocation(e.target.value)}
               />
@@ -127,7 +127,7 @@ const Create = ({ user }) => {
                 placeholder=""
                 type="date"
                 id="startDate"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
               ></input>
@@ -143,7 +143,7 @@ const Create = ({ user }) => {
                 placeholder=""
                 id="toLocation"
                 type="text"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={toLocation}
                 onChange={(e) => setToLocation(e.target.value)}
               />
@@ -159,7 +159,7 @@ const Create = ({ user }) => {
                 placeholder=""
                 type="date"
                 id="toDate"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
               />
@@ -168,7 +168,7 @@ const Create = ({ user }) => {
               {!isPending && (
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
                 >
                   Add Reservation
                 </button>
@@ -177,7 +177,7 @@ const Create = ({ user }) => {
                 <button
                   disabled
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
                 >
                   Working...
                 </button>
