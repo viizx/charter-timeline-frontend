@@ -56,7 +56,7 @@ const Create = ({ user }) => {
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-6 py-2">
               <label
-                for="selectVessel"
+                htmlFor="selectVessel"
                 className="block text-sm font-medium text-gray-700"
               >
                 Ship
@@ -82,7 +82,7 @@ const Create = ({ user }) => {
             </div>
             <div className="col-span-6 sm:col-span-6 py-2">
               <label
-                for="reservationType"
+                htmlFor="reservationType"
                 className="block text-sm font-medium text-gray-700"
               >
                 Reservation Type
@@ -102,7 +102,7 @@ const Create = ({ user }) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
-                for="fromLocation"
+                htmlFor="fromLocation"
                 className="block text-sm font-medium text-gray-700"
               >
                 From Location
@@ -118,7 +118,7 @@ const Create = ({ user }) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
-                for="startDate"
+                htmlFor="startDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 Start Date
@@ -134,7 +134,7 @@ const Create = ({ user }) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
-                for="toLocation"
+                htmlFor="toLocation"
                 className="block text-sm font-medium text-gray-700"
               >
                 To Location
@@ -150,7 +150,7 @@ const Create = ({ user }) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
-                for="toDate"
+                htmlFor="toDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 To Date

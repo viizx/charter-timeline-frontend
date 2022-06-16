@@ -41,14 +41,14 @@ function LoginForm() {
         <form onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label for="email-address" className="sr-only">
+              <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
               <input
                 id="email-address"
                 name="email"
                 type="email"
-                autocomplete="email"
+                autoComplete="email"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
@@ -88,9 +88,9 @@ function LoginForm() {
                   aria-hidden="true"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
               </span>
