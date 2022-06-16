@@ -40,7 +40,7 @@ function LoginForm() {
       <div className="max-w-md w-full space-y-8">
         <form onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
-            <div>
+            <div className="py-2">
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
@@ -50,13 +50,13 @@ function LoginForm() {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-slate-800 focus:border-slate-800 focus:z-10 sm:text-sm"
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
-            <div>
+            <div className="py-2">
               <label for="password" className="sr-only">
                 Password
               </label>
@@ -64,24 +64,34 @@ function LoginForm() {
                 id="password"
                 name="password"
                 type="password"
-                autocomplete="current-password"
+                autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-slate-800 focus:border-slate-800 focus:z-10 sm:text-sm"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
+              <p
+                className="cursor-pointer py-2"
+                onClick={() => {
+                  document.getElementById("password").type === "password"
+                    ? (document.getElementById("password").type = "text")
+                    : (document.getElementById("password").type = "password");
+                }}
+              >
+                Show Password
+              </p>
             </div>
           </div>
           {error && <p className="err">{error}</p>}
-          <div className="button">
+          <div className="button py-2">
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg
-                  className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                  className="h-5 w-5 text-slate-100 group-hover:text-slate-50"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
