@@ -1,23 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import "rsuite/dist/rsuite.min.css";
 
-const Edit = (props) => {
+const Edit = ({ props }) => {
   const defaultValues = props;
-  console.log(defaultValues);
+
   const { id } = useParams();
   const [isPending, setIsPending] = useState(false);
-  const [startDate, setStartDate] = useState([null, null]);
-  const [endDate, setEndDate] = useState([null, null]);
+  const [startDate, setStartDate] = useState(
+    new Date().toLocaleDateString("hr-HR")
+  );
+  const [endDate, setEndDate] = useState("");
   const [ship, setShip] = useState("");
   const [reservation, setReservation] = useState("");
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
 
+  const setDefaultValues = () => {
+    setStartDate(new Date(defaultValues.y[0]).toISOString().split("T")[0]);
+    setEndDate(new Date(defaultValues.y[1]).toISOString().split("T")[0]);
+    setShip(defaultValues.x);
+    setReservation(defaultValues.fillColor);
+    setFromLocation(defaultValues.from);
+    setToLocation(defaultValues.to);
+  };
+  useEffect(() => {
+    if (defaultValues) {
+      setDefaultValues();
+    }
+  }, defaultValues);
+
   var y1 = new Date(startDate).getTime();
   var y2 = new Date(endDate).getTime();
 
   var y = [y1, y2];
+  console.log(startDate);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -127,7 +144,6 @@ const Edit = (props) => {
                 Start Date
               </label>
               <input
-                placeholder=""
                 type="date"
                 id="startDate"
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -153,15 +169,14 @@ const Edit = (props) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
-                for="toDate"
+                for="endDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 End Date
               </label>
               <input
-                placeholder=""
                 type="date"
-                id="toDate"
+                id="endDate"
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
