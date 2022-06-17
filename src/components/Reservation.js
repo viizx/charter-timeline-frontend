@@ -32,7 +32,7 @@ const Reservation = () => {
 
   return (
     <div>
-      <div className="text-center min-h-full items-center justify-center py-12  sm:px-4 md:px-6 lg:px-8">
+      <div className="text-center min-h-full items-center justify-center sm:mx-4 md:mx-16 lg:mx-24 py-12 sm:px-4 md:px-6 lg:px-8">
         {isPending && <div>Loading...</div>}
         {error && <div>{error}</div>}
         {reservation && (
@@ -49,19 +49,19 @@ const Reservation = () => {
               <div className="col-span-1 sm:col-span-1 py-2">
                 {reservation.from},{" "}
                 {new Date(reservation.y[0]).toLocaleDateString(
-                  "en-US",
+                  "en-UK",
                   options
                 )}
               </div>
               <div className="col-span-1 sm:col-span-1 py-2">
                 {reservation.to},{" "}
                 {new Date(reservation.y[1]).toLocaleDateString(
-                  "en-US",
+                  "en-UK",
                   options
                 )}
               </div>
             </div>
-            <div className="col-span-6 sm:col-span-6 py-2 px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <div className="col-span-6 sm:col-span-6 py-2  py-3 bg-gray-50 text-right sm:px-6">
               {!isPending && (
                 <button
                   onClick={handleDelete}

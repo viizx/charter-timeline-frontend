@@ -22,14 +22,14 @@ const Read = ({ reservations }) => {
               <div className="col-span-1 sm:col-span-1 py-2">
                 {reservation.from},{" "}
                 {new Date(reservation.y[0]).toLocaleDateString(
-                  "en-US",
+                  "en-UK",
                   options
                 )}
               </div>
               <div className="col-span-1 sm:col-span-1 py-2">
                 {reservation.to},{" "}
                 {new Date(reservation.y[1]).toLocaleDateString(
-                  "en-US",
+                  "en-UK",
                   options
                 )}
               </div>
