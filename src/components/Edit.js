@@ -34,7 +34,6 @@ const Edit = ({ props }) => {
   var y2 = new Date(endDate).getTime();
 
   var y = [y1, y2];
-  console.log(startDate);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,7 +57,6 @@ const Edit = ({ props }) => {
       }
     );
     if (response) {
-      console.log(response);
       setIsPending(false);
       setEndDate("");
       setStartDate("");
