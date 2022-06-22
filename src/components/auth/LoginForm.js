@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 function LoginForm() {
@@ -35,7 +34,6 @@ function LoginForm() {
     }
   };
   return (
-    //max-w-md w-full space-y-8
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <form onSubmit={handleSubmit}>
@@ -57,7 +55,7 @@ function LoginForm() {
               ></input>
             </div>
             <div className="py-2">
-              <label for="password" className="sr-only">
+              <label htmlFor="password" className="sr-only">
                 Password
               </label>
               <input
