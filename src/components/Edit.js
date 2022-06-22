@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 const Edit = ({ props }) => {
   const defaultValues = props;
-  console.log(props);
   const { id } = useParams();
   const [isPending, setIsPending] = useState(false);
   const [startDate, setStartDate] = useState(
@@ -54,7 +53,9 @@ const Edit = ({ props }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(input),
       }
-    );
+    )
+      .then(() => setIsPending(false))
+      .catch((error) => console.log(error));
   };
 
   return (
