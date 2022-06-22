@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const Edit = ({ props }) => {
   const defaultValues = props;
-
+  console.log(props);
   const { id } = useParams();
   const [isPending, setIsPending] = useState(false);
   const [startDate, setStartDate] = useState(
@@ -33,9 +33,8 @@ const Edit = ({ props }) => {
   var y2 = new Date(endDate).getTime();
 
   var y = [y1, y2];
-  console.log(startDate);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const input = {
       x: ship,
@@ -47,7 +46,7 @@ const Edit = ({ props }) => {
 
     setIsPending(true);
 
-    const response = await fetch(
+    fetch(
       "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation/" +
         id,
       {
@@ -56,15 +55,6 @@ const Edit = ({ props }) => {
         body: JSON.stringify(input),
       }
     );
-    if (response) {
-      setIsPending(false);
-      setEndDate("");
-      setStartDate("");
-      setShip("");
-      setReservation("");
-      setFromLocation("");
-      setToLocation("");
-    }
   };
 
   return (
@@ -167,11 +157,7 @@ const Edit = ({ props }) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
-<<<<<<< HEAD
                 htmlFor="endDate"
-=======
-                for="endDate"
->>>>>>> d4aa0dbc5bae65883e30bb5799accc251f5f8aac
                 className="block text-sm font-medium text-gray-700"
               >
                 End Date
