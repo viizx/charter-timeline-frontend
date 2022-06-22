@@ -33,6 +33,7 @@ const Edit = ({ props }) => {
   var y2 = new Date(endDate).getTime();
 
   var y = [y1, y2];
+  console.log(startDate);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -166,7 +167,11 @@ const Edit = ({ props }) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
+<<<<<<< HEAD
                 htmlFor="endDate"
+=======
+                for="endDate"
+>>>>>>> d4aa0dbc5bae65883e30bb5799accc251f5f8aac
                 className="block text-sm font-medium text-gray-700"
               >
                 End Date
