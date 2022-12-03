@@ -12,14 +12,14 @@ const Reservation = () => {
     error,
     isPending,
   } = useFetch(
-    "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation/" +
+    "http://localhost:3000/api/reservation/" +
       id
   );
   const history = useHistory();
 
   const handleDelete = async () => {
     const response = await fetch(
-      "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation/" +
+      "http://localhost:3000/api/reservation/" +
         id,
       {
         method: "DELETE",

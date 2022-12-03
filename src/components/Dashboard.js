@@ -6,7 +6,7 @@ import Create from "./Create";
 
 const Dashboard = ({ user }) => {
   const { isPending, data: reservations } = useFetch(
-    "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation"
+    "http://localhost:3000/api/reservation"
   );
 
   const [modal, setModal] = useState(false);

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
 
 class ApexChart extends Component {
+  
   constructor(props) {
     super(props);
-
     this.state = {
       series: [],
       options: {
@@ -38,9 +38,10 @@ class ApexChart extends Component {
     };
   }
 
+
   fetchData() {
     fetch(
-      `https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation`
+      `http://localhost:3000/api/reservation`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -52,13 +53,24 @@ class ApexChart extends Component {
           series: newSeries,
           options: {
             ...this.state.options,
+          tooltip: {
+            custom: function({series, seriesIndex, dataPointIndex, w}) {
+              let options = { year: "numeric", month: "short", day: "numeric" };
+              const root = newSeries[seriesIndex].data[dataPointIndex]
+              const fromDate = new Date(root.y[0]).toLocaleDateString('en-UK', options)
+              const toDate = new Date(root.y[1]).toLocaleDateString('en-UK', options)
+              console.log(root.from, seriesIndex, dataPointIndex)
+              return `<div class="p-2"><span><p><b>From:</b> ${root.from}, ${fromDate}</p><p><b>To:</b> ${root.to}, ${toDate}</p></span></div>`
+            }
+          }
           },
         });
       });
+      
   }
 
   componentDidMount() {
-    this.fetchData();
+  this.fetchData();
   }
 
   render() {

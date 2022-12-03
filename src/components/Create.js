@@ -27,7 +27,7 @@ const Create = ({ user }) => {
     setIsPending(true);
 
     const response = await fetch(
-      "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation",
+      "http://localhost:3000/api/reservation",
       {
         method: "POST",
         headers: {
@@ -96,8 +96,8 @@ const Create = ({ user }) => {
                 onChange={(e) => setReservation(e.target.value)}
               >
                 <option defaultValue=""></option>
-                <option value="#006066">Booked</option>
-                <option value="#061137">Option</option>
+                <option value="#FEB019">Booked</option>
+                <option value="#008FFB">Option</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">

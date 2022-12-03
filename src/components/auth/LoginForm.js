@@ -12,7 +12,7 @@ function LoginForm() {
     const creds = { email, password };
     console.log(creds);
     const rawResponse = await fetch(
-      "https://port-3000-js-practice-vice889681.codeanyapp.com/api/user/login/",
+      "http://localhost:3000/api/user/login/",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

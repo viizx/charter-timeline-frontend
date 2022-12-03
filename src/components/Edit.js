@@ -46,7 +46,7 @@ const Edit = ({ props }) => {
     setIsPending(true);
 
     fetch(
-      "https://port-3000-js-practice-vice889681.codeanyapp.com/api/reservation/" +
+      "http://localhost:3000/api/reservation/" +
         id,
       {
         method: "PUT",
@@ -105,8 +105,8 @@ const Edit = ({ props }) => {
                 onChange={(e) => setReservation(e.target.value)}
               >
                 <option defaultValue="">Select your option</option>
-                <option value="#006066">Booked</option>
-                <option value="#061137">Option</option>
+                <option value="#FEB019">Booked</option>
+                <option value="#008FFB">Option</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
