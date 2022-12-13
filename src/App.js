@@ -1,53 +1,48 @@
-import { useState, useEffect } from "react";
-import Timeline from "./components/Timeline";
-import Dashboard from "./components/Dashboard";
-import Reservation from "./components/Reservation";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import LoginForm from "./components/auth/LoginForm";
+import React, { useState, useEffect } from 'react'
+import Timeline from './components/Timeline'
+import Dashboard from './components/Dashboard'
+import Reservation from './components/Reservation'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import LoginForm from './components/auth/LoginForm'
 
-function App() {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-
-  let authObject = JSON.parse(user);
-  console.log(authObject);
+function App () {
+  const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
 
   useEffect(() => {
-    let isMounted = true;
-    const auth = async () => {
-      setUser(localStorage.getItem("user"));
-      setToken(localStorage.getItem("auth-token"));
-    };
+    const localUser = localStorage.getItem('user')
+    const localToken = localStorage.getItem('auth-token')
 
-    auth();
-    return () => {
-      isMounted = false;
-      console.log(authObject);
-    };
-  });
+    // Validate user and token
+    if (localUser && localToken) {
+      setUser(JSON.parse(localUser))
+      setToken(localToken)
+    }
+  }, [])
+
+  const checkAuth = (component) => {
+    return token && user.isAdmin ? component : <LoginForm />
+  }
 
   return (
     <Router>
       <div className="App">
         <div className="bg-gray-50">
-          {authObject && authObject.isAdmin && <Navbar />}
+          {user && user.isAdmin && <Navbar />}
           <Switch>
-            <Route exact path="/">
-              <Timeline />
-            </Route>
+            <Route exact path="/" component={Timeline} />
             <Route exact path="/dashboard">
-              {token && authObject.isAdmin && <Dashboard user={token} />}
-              {!authObject && <LoginForm />}
+              {checkAuth(<Dashboard user={token} />)}
             </Route>
             <Route path="/reservations/:id">
-              <Reservation />
+              {checkAuth(<Reservation user={token} />)}
             </Route>
           </Switch>
         </div>
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

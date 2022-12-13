@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-function Loading() {
+function Loading () {
   return (
     <div className="flex w-screen items-center justify-center">
       <button
@@ -31,7 +31,7 @@ function Loading() {
         <span className="font-medium"> Processing... </span>
       </button>
     </div>
-  );
+  )
 }
 
-export default Loading;
+export default Loading

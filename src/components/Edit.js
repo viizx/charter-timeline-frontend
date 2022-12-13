@@ -1,62 +1,62 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 const Edit = ({ props }) => {
-  const defaultValues = props;
-  const { id } = useParams();
-  const [isPending, setIsPending] = useState(false);
+  const defaultValues = props
+  const { id } = useParams()
+  const [isPending, setIsPending] = useState(false)
   const [startDate, setStartDate] = useState(
-    new Date().toLocaleDateString("hr-HR")
-  );
-  const [endDate, setEndDate] = useState("");
-  const [ship, setShip] = useState("");
-  const [reservation, setReservation] = useState("");
-  const [fromLocation, setFromLocation] = useState("");
-  const [toLocation, setToLocation] = useState("");
+    new Date().toLocaleDateString('hr-HR')
+  )
+  const [endDate, setEndDate] = useState('')
+  const [ship, setShip] = useState('')
+  const [reservation, setReservation] = useState('')
+  const [fromLocation, setFromLocation] = useState('')
+  const [toLocation, setToLocation] = useState('')
 
   const setDefaultValues = () => {
-    setStartDate(new Date(defaultValues.y[0]).toISOString().split("T")[0]);
-    setEndDate(new Date(defaultValues.y[1]).toISOString().split("T")[0]);
-    setShip(defaultValues.x);
-    setReservation(defaultValues.fillColor);
-    setFromLocation(defaultValues.from);
-    setToLocation(defaultValues.to);
-  };
+    setStartDate(new Date(defaultValues.y[0]).toISOString().split('T')[0])
+    setEndDate(new Date(defaultValues.y[1]).toISOString().split('T')[0])
+    setShip(defaultValues.x)
+    setReservation(defaultValues.fillColor)
+    setFromLocation(defaultValues.from)
+    setToLocation(defaultValues.to)
+  }
   useEffect(() => {
     if (defaultValues) {
-      setDefaultValues();
+      setDefaultValues()
     }
-  }, defaultValues);
+  }, defaultValues)
 
-  var y1 = new Date(startDate).getTime();
-  var y2 = new Date(endDate).getTime();
+  const y1 = new Date(startDate).getTime()
+  const y2 = new Date(endDate).getTime()
 
-  var y = [y1, y2];
+  const y = [y1, y2]
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const input = {
       x: ship,
       y,
       fillColor: reservation,
       from: fromLocation,
-      to: toLocation,
-    };
+      to: toLocation
+    }
 
-    setIsPending(true);
+    setIsPending(true)
 
     fetch(
-      "http://localhost:3000/api/reservation/" +
+      'https://charter-timeline.vercel.app/api/reservation/' +
         id,
       {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(input)
       }
     )
       .then(() => setIsPending(false))
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error))
+  }
 
   return (
     <div className="container mx-auto py-5 sm:px-3 md:px-100 lg:px-100">
@@ -105,8 +105,8 @@ const Edit = ({ props }) => {
                 onChange={(e) => setReservation(e.target.value)}
               >
                 <option defaultValue="">Select your option</option>
-                <option value="#FEB019">Booked</option>
-                <option value="#008FFB">Option</option>
+                <option value="#006066">Booked</option>
+                <option value="#061137">Option</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
@@ -194,7 +194,7 @@ const Edit = ({ props }) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Edit;
+export default Edit

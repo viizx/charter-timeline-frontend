@@ -1,39 +1,44 @@
-import React, { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import useFetch from "../utility/useFetch";
-import Edit from "./Edit";
+import React from 'react'
+import { useHistory, useParams } from 'react-router-dom'
+import useFetch from '../utility/useFetch'
+import Edit from './Edit'
+import Loading from './Loading'
 
-const Reservation = () => {
-  const options = { year: "numeric", month: "short", day: "numeric" };
+const Reservation = ({ user }) => {
+  const options = { year: 'numeric', month: 'short', day: 'numeric' }
 
-  const { id } = useParams();
+  const { id } = useParams()
   const {
     data: reservation,
     error,
-    isPending,
+    isPending
   } = useFetch(
-    "http://localhost:3000/api/reservation/" +
+    'https://charter-timeline.vercel.app/api/reservation/' +
       id
-  );
-  const history = useHistory();
+  )
+  const history = useHistory()
 
   const handleDelete = async () => {
     const response = await fetch(
-      "http://localhost:3000/api/reservation/" +
+      'https://charter-timeline.vercel.app/api/reservation/' +
         id,
       {
-        method: "DELETE",
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': user
+        }
       }
-    );
+    )
     if (response) {
-      history.push("/dashboard");
+      history.push('/dashboard')
     }
-  };
+  }
 
   return (
     <div>
       <div className="text-center min-h-full items-center justify-center sm:mx-4 md:mx-16 lg:mx-24 py-12 sm:px-4 md:px-6 lg:px-8">
-        {isPending && <div>Loading...</div>}
+        {isPending && <div><Loading /></div>}
         {error && <div>{error}</div>}
         {reservation && (
           <div>
@@ -47,16 +52,16 @@ const Reservation = () => {
                 {reservation.x}
               </div>
               <div className="col-span-1 sm:col-span-1 py-2">
-                {reservation.from},{" "}
+                {reservation.from},{' '}
                 {new Date(reservation.y[0]).toLocaleDateString(
-                  "en-UK",
+                  'en-UK',
                   options
                 )}
               </div>
               <div className="col-span-1 sm:col-span-1 py-2">
-                {reservation.to},{" "}
+                {reservation.to},{' '}
                 {new Date(reservation.y[1]).toLocaleDateString(
-                  "en-UK",
+                  'en-UK',
                   options
                 )}
               </div>
@@ -84,7 +89,7 @@ const Reservation = () => {
       </div>
       <Edit props={reservation} />
     </div>
-  );
-};
+  )
+}
 
-export default Reservation;
+export default Reservation

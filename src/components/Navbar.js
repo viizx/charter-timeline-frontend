@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-function Navbar() {
+function Navbar () {
   return (
     <nav className="bg-slate-900">
       <div className="mx-auto py-1.5 px-2 sm:px-6 lg:px-6">
@@ -21,7 +21,7 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

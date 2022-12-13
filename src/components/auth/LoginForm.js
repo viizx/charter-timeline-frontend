@@ -1,38 +1,38 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-function LoginForm() {
-  const history = useHistory();
-  if (localStorage.getItem("auth-token")) history.push("/dashboard");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+function LoginForm () {
+  const history = useHistory()
+
+  if (localStorage.getItem('auth-token')) history.push('/dashboard')
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const creds = { email, password };
-    console.log(creds);
-    const rawResponse = await fetch(
-      "http://localhost:3000/api/user/login/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(creds),
-      }
-    );
+    e.preventDefault()
+    const creds = { email, password }
+    console.log(creds)
+    const rawResponse = await fetch('https://charter-timeline.vercel.app/api/user/login/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(creds)
+    })
     try {
-      const response = await rawResponse.json();
-      console.log(response);
+      const response = await rawResponse.json()
+      console.log(response)
       if (response.message) {
-        setError(response.message);
+        setError(response.message)
       } else {
-        localStorage.setItem("auth-token", response.token);
-        localStorage.setItem("user", JSON.stringify(response.user));
-        history.go(0);
+        localStorage.setItem('auth-token', response.token)
+        localStorage.setItem('user', JSON.stringify(response.user))
+        history.go(0)
       }
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -72,9 +72,9 @@ function LoginForm() {
               <p
                 className="cursor-pointer py-2"
                 onClick={() => {
-                  document.getElementById("password").type === "password"
-                    ? (document.getElementById("password").type = "text")
-                    : (document.getElementById("password").type = "password");
+                  document.getElementById('password').type === 'password'
+                    ? (document.getElementById('password').type = 'text')
+                    : (document.getElementById('password').type = 'password')
                 }}
               >
                 Show Password
@@ -108,7 +108,7 @@ function LoginForm() {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default LoginForm;
+export default LoginForm

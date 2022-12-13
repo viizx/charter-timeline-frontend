@@ -1,55 +1,53 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-const Create = ({ user }) => {
-  const [isPending, setIsPending] = useState(false);
-  const [startDate, setStartDate] = useState([null, null]);
-  const [endDate, setEndDate] = useState([null, null]);
-  const [ship, setShip] = useState("");
-  const [reservation, setReservation] = useState("");
-  const [fromLocation, setFromLocation] = useState("");
-  const [toLocation, setToLocation] = useState("");
+const Create = ({ user, ships }) => {
+  const history = useHistory()
+  const [isPending, setIsPending] = useState(false)
+  const [startDate, setStartDate] = useState([null, null])
+  const [endDate, setEndDate] = useState([null, null])
+  const [ship, setShip] = useState('')
+  const [reservation, setReservation] = useState('')
+  const [fromLocation, setFromLocation] = useState('')
+  const [toLocation, setToLocation] = useState('')
 
-  var y1 = new Date(startDate).getTime();
-  var y2 = new Date(endDate).getTime();
+  const y1 = new Date(startDate).getTime()
+  const y2 = new Date(endDate).getTime()
 
-  var y = [y1, y2];
+  const y = [y1, y2]
+  console.log(ships)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const input = {
       x: ship,
       y,
       fillColor: reservation,
       from: fromLocation,
-      to: toLocation,
-    };
+      to: toLocation
+    }
 
-    setIsPending(true);
+    setIsPending(true)
 
     const response = await fetch(
-      "http://localhost:3000/api/reservation",
+      'https://charter-timeline.vercel.app/api/reservation',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          "auth-token": user,
+          'Content-Type': 'application/json',
+          'auth-token': user
         },
-        body: JSON.stringify(input),
+        body: JSON.stringify(input)
       }
-    );
+    )
 
     if (response) {
-      setIsPending(false);
-      setEndDate("");
-      setStartDate("");
-      setShip("");
-      setReservation("");
-      setFromLocation("");
-      setToLocation("");
+      history.go(0)
     }
-  };
+  }
 
   return (
+    <div className='px-5'>Create new Reservation
     <div className="container mx-auto py-5 sm:px-3 md:px-100 lg:px-100">
       <div className="align-content: center px-4">
         <form onSubmit={handleSubmit}>
@@ -69,15 +67,11 @@ const Create = ({ user }) => {
                 placeholder="Select vessel"
                 onChange={(e) => setShip(e.target.value)}
               >
+
                 <option defaultValue=""></option>
-                <option value="Lady Gita">Lady Gita</option>
-                <option value="Ardura">Ardura</option>
-                <option value="Alba">Alba</option>
-                <option value="Slano">Slano</option>
-                <option value="Vito">Vito</option>
-                <option value="Korab">Korab</option>
-                <option value="Agape Rose">Agape Rose</option>
-                <option value="Son De Mar">Son De Mar</option>
+                {ships.map(ship => {
+                  return <option key={ship._id}value={ship.name}>{ship.name}</option>
+                })}
               </select>
             </div>
             <div className="col-span-6 sm:col-span-6 py-2">
@@ -187,7 +181,8 @@ const Create = ({ user }) => {
         </form>
       </div>
     </div>
-  );
-};
+    </div>
+  )
+}
 
-export default Create;
+export default Create
