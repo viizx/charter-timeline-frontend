@@ -1,43 +1,45 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-const Edit = ({ props }) => {
-  const defaultValues = props
+const Edit = (props) => {
+  console.log(props)
   const { id } = useParams()
   const [isPending, setIsPending] = useState(false)
-  const [startDate, setStartDate] = useState(
-    new Date().toLocaleDateString('hr-HR')
-  )
-  const [endDate, setEndDate] = useState('')
-  const [ship, setShip] = useState('')
-  const [reservation, setReservation] = useState('')
-  const [fromLocation, setFromLocation] = useState('')
-  const [toLocation, setToLocation] = useState('')
+
+  const [formData, setFormData] = useState({
+    startDate: '',
+    endDate: '',
+    ship: '',
+    reservation: '',
+    fromLocation: '',
+    toLocation: ''
+  })
 
   const setDefaultValues = () => {
-    setStartDate(new Date(defaultValues.y[0]).toISOString().split('T')[0])
-    setEndDate(new Date(defaultValues.y[1]).toISOString().split('T')[0])
-    setShip(defaultValues.x)
-    setReservation(defaultValues.fillColor)
-    setFromLocation(defaultValues.from)
-    setToLocation(defaultValues.to)
+    setFormData({
+      startDate: new Date(props.reservation.y[0]).toISOString().split('T')[0],
+      endDate: new Date(props.reservation.y[1]).toISOString().split('T')[0],
+      ship: props.reservation.x,
+      reservation: props.reservation.fillColor,
+      fromLocation: props.reservation.from,
+      toLocation: props.reservation.to
+    })
   }
+
   useEffect(() => {
-    if (defaultValues) {
+    if (props) {
       setDefaultValues()
     }
-  }, defaultValues)
-
-  const y1 = new Date(startDate).getTime()
-  const y2 = new Date(endDate).getTime()
-
-  const y = [y1, y2]
+  }, [props])
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const { startDate, endDate, ship, reservation, fromLocation, toLocation } = formData
+    const y1 = new Date(startDate).getTime()
+    const y2 = new Date(endDate).getTime()
     const input = {
       x: ship,
-      y,
+      y: [y1, y2],
       fillColor: reservation,
       from: fromLocation,
       to: toLocation
@@ -50,7 +52,10 @@ const Edit = ({ props }) => {
         id,
       {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': props.user
+        },
         body: JSON.stringify(input)
       }
     )
@@ -74,9 +79,9 @@ const Edit = ({ props }) => {
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 aria-label="Default select example"
                 id="selectVessel"
-                value={ship}
+                value={formData.ship}
                 placeholder="Select vessel"
-                onChange={(e) => setShip(e.target.value)}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, ship: e.target.value }))}
               >
                 <option defaultValue="">Select vessel</option>
                 <option value="Lady Gita">Lady Gita</option>
@@ -99,14 +104,14 @@ const Edit = ({ props }) => {
               <select
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 aria-label="Default select example"
-                value={reservation}
+                value={formData.reservation}
                 id="reservationType"
                 placeholder=""
-                onChange={(e) => setReservation(e.target.value)}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, reservation: e.target.value }))}
               >
                 <option defaultValue="">Select your option</option>
-                <option value="#006066">Booked</option>
-                <option value="#061137">Option</option>
+                <option value="#FEB019">Booked</option>
+                <option value="#008FFB">Option</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
@@ -121,8 +126,8 @@ const Edit = ({ props }) => {
                 id="fromLocation"
                 type="text"
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                value={fromLocation}
-                onChange={(e) => setFromLocation(e.target.value)}
+                value={formData.fromLocation}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, fromLocation: e.target.value }))}
               />
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
@@ -136,8 +141,8 @@ const Edit = ({ props }) => {
                 type="date"
                 id="startDate"
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
+                value={formData.startDate}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, startDate: e.target.value }))}
               ></input>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
@@ -152,8 +157,8 @@ const Edit = ({ props }) => {
                 id="toLocation"
                 type="text"
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                value={toLocation}
-                onChange={(e) => setToLocation(e.target.value)}
+                value={formData.toLocation}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, toLocation: e.target.value }))}
               />
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
@@ -167,8 +172,8 @@ const Edit = ({ props }) => {
                 type="date"
                 id="endDate"
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
+                value={formData.endDate}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, endDate: e.target.value }))}
               />
             </div>
             <div className="col-span-6 sm:col-span-6 py-2 px-4 py-3 bg-gray-50 text-right sm:px-6">

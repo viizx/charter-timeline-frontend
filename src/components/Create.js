@@ -47,9 +47,8 @@ const Create = ({ user, ships }) => {
   }
 
   return (
-    <div className='px-5'>Create new Reservation
-    <div className="container mx-auto py-5 sm:px-3 md:px-100 lg:px-100">
-      <div className="align-content: center px-4">
+    <div className="w-full py-5 ">
+      <div className="align-content: center">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-6 py-2">
@@ -60,7 +59,7 @@ const Create = ({ user, ships }) => {
                 Ship
               </label>
               <select
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+                className="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 aria-label="Default select example"
                 id="selectVessel"
                 value={ship}
@@ -82,7 +81,7 @@ const Create = ({ user, ships }) => {
                 Reservation Type
               </label>
               <select
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+                className="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 aria-label="Default select example"
                 value={reservation}
                 id="reservationType"
@@ -105,7 +104,7 @@ const Create = ({ user, ships }) => {
                 placeholder=""
                 id="fromLocation"
                 type="text"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+                className="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={fromLocation}
                 onChange={(e) => setFromLocation(e.target.value)}
               />
@@ -121,7 +120,7 @@ const Create = ({ user, ships }) => {
                 placeholder=""
                 type="date"
                 id="startDate"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+                className="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
               ></input>
@@ -137,7 +136,7 @@ const Create = ({ user, ships }) => {
                 placeholder=""
                 id="toLocation"
                 type="text"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+                className="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={toLocation}
                 onChange={(e) => setToLocation(e.target.value)}
               />
@@ -153,16 +152,16 @@ const Create = ({ user, ships }) => {
                 placeholder=""
                 type="date"
                 id="toDate"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+                className="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </div>
-            <div className="col-span-6 sm:col-span-6 py-2 px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <div className="col-span-6 sm:col-span-6 py-2  py-3 bg-gray-50 text-right ">
               {!isPending && (
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
+                  className="inline-flex justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
                 >
                   Add Reservation
                 </button>
@@ -171,7 +170,7 @@ const Create = ({ user, ships }) => {
                 <button
                   disabled
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
+                  className="inline-flex justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
                 >
                   Working...
                 </button>
@@ -180,7 +179,6 @@ const Create = ({ user, ships }) => {
           </div>
         </form>
       </div>
-    </div>
     </div>
   )
 }

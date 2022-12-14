@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Read from './Read'
 import useFetch from '../utility/useFetch'
 import Loading from './Loading'
@@ -14,56 +14,24 @@ const Dashboard = ({ user }) => {
     'https://charter-timeline.vercel.app/api/ship'
   )
 
-  const [reservationModal, setReservationModal] = useState(false)
-  const [shipModal, setShipModal] = useState(false)
-
   return (
     <>
-      <div className="flex justify-center mx-auto py-5 sm:px-3 md:px-100 lg:px-100">
-        {!reservationModal && (
-          <button
-            className="inline-flex justify-center py-2 px-4 mx-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
-            onClick={() => setReservationModal(!reservationModal)}
-          >
-            Create new Reservation
-          </button>
-        )}
-        {reservationModal && (
-          <button
-            className="inline-flex justify-center py-2 px-4 mx-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
-            onClick={() => setReservationModal(!reservationModal)}
-          >
-            Hide Reservations
-          </button>
-        )}
-        {!shipModal && (
-          <button
-            className="inline-flex justify-center py-2 px-4 mx-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
-            onClick={() => setShipModal(!shipModal)}
-          >
-            My Fleet
-          </button>
-        )}
-        {shipModal && (
-          <button
-            className="inline-flex justify-center py-2 px-4 mx-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
-            onClick={() => setShipModal(!shipModal)}
-          >
-            Hide Fleet
-          </button>
-        )}
-      </div>
-
-      <div className="flex-wrap">
-        <div className=" py-2">
-          {ships && reservationModal && <Create user={user} ships={ships} />}
+      <div className="flex flex-row flex-wrap justify-center p-5 w-full">
+        <div className='flex flex-col p-1 w-auto'>
+          <h2 className="text-xl">Create New Reservation</h2>
+          {ships && <Create user={user} ships={ships} />}
         </div>
-        <div className="py-2">
-          {!pendingShips && shipModal && <Fleet user={user} ships={ships} />}
+        <div className='flex flex-col p-1 w-auto'>
+          <h2 className="text-xl">My Fleet</h2>
+          {!pendingShips && <Fleet user={user} ships={ships} />}
         </div>
       </div>
       {isPending && <Loading />}
-      {reservations && <Read reservations={reservations} />}
+
+      <div className="p-5">
+        <h2 className="text-xl">Reservations</h2>
+        {reservations && <Read reservations={reservations} />}
+      </div>
     </>
   )
 }
