@@ -17,19 +17,19 @@ const Dashboard = ({ user }) => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-center p-5 w-full">
-        <div className='flex flex-col p-1 w-auto'>
+        <div className='flex flex-col m-2 p-4 w-auto border border-gray-400 rounded-md shadow-sm'>
           <h2 className="text-xl">Create New Reservation</h2>
           {ships && <Create user={user} ships={ships} />}
         </div>
-        <div className='flex flex-col p-1 w-auto'>
+        <div className='flex flex-col m-2 p-4 w-auto border border-gray-400 rounded-md shadow-sm'>
           <h2 className="text-xl">My Fleet</h2>
           {!pendingShips && <Fleet user={user} ships={ships} />}
         </div>
       </div>
       {isPending && <Loading />}
 
-      <div className="p-5">
-        <h2 className="text-xl">Reservations</h2>
+      <div className="flex flex-col p-5 m-5 border-gray-400 rounded-md shadow-sm">
+        <h2 className="text-xl items-center">Reservations</h2>
         {reservations && <Read reservations={reservations} />}
       </div>
     </>

@@ -47,7 +47,7 @@ const Create = ({ user, ships }) => {
   }
 
   return (
-    <div className="w-full py-5 ">
+    <div className="w-full px-5 ">
       <div className="align-content: center">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-6 gap-6">
