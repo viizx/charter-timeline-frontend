@@ -89,8 +89,8 @@ const Create = ({ user, ships }) => {
                 onChange={(e) => setReservation(e.target.value)}
               >
                 <option defaultValue=""></option>
-                <option value="#FEB019">Booked</option>
-                <option value="#008FFB">Option</option>
+                <option value="#f2dbdb">Booked</option>
+                <option value="#c5d8f1">Option</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
@@ -157,7 +157,7 @@ const Create = ({ user, ships }) => {
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </div>
-            <div className="col-span-6 sm:col-span-6 py-2  py-3 bg-gray-50 text-right ">
+            <div className="col-span-6 sm:col-span-6 py-2 py-3 text-right ">
               {!isPending && (
                 <button
                   type="submit"

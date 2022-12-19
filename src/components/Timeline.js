@@ -23,15 +23,19 @@ class ApexChart extends Component {
         stroke: {
           width: 0.1,
           curve: 'smooth',
-          lineCap: 'butt'
+          lineCap: 'round'
         },
         fill: {
           type: 'solid',
           opacity: 1
         },
         legend: {
-          position: 'top',
-          horizontalAlign: 'left'
+          show: true,
+          showForSingleSeries: true,
+          customLegendItems: ['Booked', 'Option'],
+          markers: {
+            fillColors: ['#f2dbdb', '#c5d8f1']
+          }
         }
       }
     }

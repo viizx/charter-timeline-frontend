@@ -110,8 +110,8 @@ const Edit = (props) => {
                 onChange={(e) => setFormData(prevForm => ({ ...prevForm, reservation: e.target.value }))}
               >
                 <option defaultValue="">Select your option</option>
-                <option value="#FEB019">Booked</option>
-                <option value="#008FFB">Option</option>
+                <option value="#f2dbdb">Booked</option>
+                <option value="#c5d8f1">Option</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">

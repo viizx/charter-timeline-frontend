@@ -5,6 +5,7 @@ import Reservation from './components/Reservation'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import LoginForm from './components/auth/LoginForm'
+// import pattern from './images/pattern.jpg'
 
 function App () {
   const [user, setUser] = useState(null)
@@ -28,7 +29,7 @@ function App () {
   return (
     <Router>
       <div className="App">
-        <div className="bg-gray-50">
+        <div className="w-full bg-[url('images/pattern.png')] bg-contain bg-fixed bg-center bg-repeat-round">
           {user && user.isAdmin && <Navbar />}
           <Switch>
             <Route exact path="/" component={Timeline} />
