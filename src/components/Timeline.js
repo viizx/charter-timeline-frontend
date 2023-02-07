@@ -14,7 +14,20 @@ class ApexChart extends Component {
         plotOptions: {
           bar: {
             horizontal: true,
-            barHeight: '80%'
+            barHeight: '80%',
+            borderRadius: 5
+            // borderRadiusApplication: 'around',
+            // borderRadiusWhenStacked: 'last',
+            // rangeBarOverlap: true,
+
+          },
+          states: {
+            hover: {
+              filter: {
+                type: 'darken',
+                value: 0.05
+              }
+            }
           }
         },
         xaxis: {
