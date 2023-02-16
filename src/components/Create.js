@@ -10,6 +10,7 @@ const Create = ({ user, ships }) => {
   const [reservation, setReservation] = useState('')
   const [fromLocation, setFromLocation] = useState('')
   const [toLocation, setToLocation] = useState('')
+  const [error, setError] = useState(false)
 
   const y1 = new Date(startDate).getTime()
   const y2 = new Date(endDate).getTime()
@@ -40,8 +41,10 @@ const Create = ({ user, ships }) => {
       }
     )
 
-    if (response) {
+    if (response.ok) {
       history.go(0)
+    } else {
+      setError(true)
     }
   }
 
@@ -175,6 +178,7 @@ const Create = ({ user, ships }) => {
                   Working...
                 </button>
               )}
+              {error && <p>Something went wron</p>}
             </div>
           </div>
         </form>

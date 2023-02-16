@@ -20,38 +20,44 @@ const Read = ({ reservations }) => {
   }
 
   const filterReservations = (reservation) => {
-    if (!searchFromDate || !searchToDate) return reservation.x.toLowerCase().includes(searchTerm.toLowerCase())
-    return reservation.x.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    ((reservation.y[0]) >= new Date(searchFromDate).getTime() && (reservation.y[1]) <= new Date(searchToDate).getTime())
+    if (!searchFromDate || !searchToDate) { return reservation.x.toLowerCase().includes(searchTerm.toLowerCase()) }
+    return (
+      reservation.x.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      reservation.y[0] >= new Date(searchFromDate).getTime() &&
+      reservation.y[1] <= new Date(searchToDate).getTime()
+    )
   }
   const filteredReservations = reservations.filter(filterReservations)
   return (
     <div className="text-center min-h-full items-center justify-center py-12  sm:px-4 md:px-6 lg:px-8">
-      <div className="flex align-center flex-wrap py-2">
-          Search by Ship name: <input
-            className="mt-1 block py-2 w-full border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
-            type="text"
-            id="search"
-            value={searchTerm}
-            onChange={handleChange}
-            placeholder="Search by Ship name"
-          />
-          Date From Filter:<input
-            className="mt-1 block py-2 w-full border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
-            type="date"
-            id="from-date"
-            value={searchFromDate}
-            onChange={handleFromDateChange}
-            placeholder="From"
-          />
-          Date To Filter:<input
-            className="mt-1 block py-2 w-full border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
-            type="date"
-            id="to-date"
-            value={searchToDate}
-            onChange={handleToDateChange}
-            placeholder="To"
-          />
+      <div className="flex flex-col align-center flex-wrap py-2">
+        Search by Ship name:{' '}
+        <input
+          className="mt-1 block py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+          type="text"
+          id="search"
+          value={searchTerm}
+          onChange={handleChange}
+          placeholder="Search by Ship name"
+        />
+        Date From Filter:
+        <input
+          className="mt-1 block py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+          type="date"
+          id="from-date"
+          value={searchFromDate}
+          onChange={handleFromDateChange}
+          placeholder="From"
+        />
+        Date To Filter:
+        <input
+          className="mt-1 block py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+          type="date"
+          id="to-date"
+          value={searchToDate}
+          onChange={handleToDateChange}
+          placeholder="To"
+        />
       </div>
       <div className="grid grid-cols-3 gap-6">
         <div className="col-span-1 sm:col-span-1 py-2">Ship</div>

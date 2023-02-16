@@ -176,7 +176,7 @@ const Edit = (props) => {
                 onChange={(e) => setFormData(prevForm => ({ ...prevForm, endDate: e.target.value }))}
               />
             </div>
-            <div className="col-span-6 sm:col-span-6 py-2 px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <div className="col-span-6 sm:col-span-6 py-2 px-4 text-right sm:px-6">
               {!isPending && (
                 <button
                   type="submit"
