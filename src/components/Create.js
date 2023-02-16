@@ -15,7 +15,6 @@ const Create = ({ user, ships }) => {
   const y2 = new Date(endDate).getTime()
 
   const y = [y1, y2]
-  console.log(ships)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -91,6 +90,7 @@ const Create = ({ user, ships }) => {
                 <option defaultValue=""></option>
                 <option value="#f2dbdb">Booked</option>
                 <option value="#c5d8f1">Option</option>
+                <option value="#dfe5ed">Free</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">

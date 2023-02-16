@@ -13,7 +13,6 @@ function LoginForm () {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const creds = { email, password }
-    console.log(creds)
     const rawResponse = await fetch('https://charter-timeline.vercel.app/api/user/login/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -21,7 +20,6 @@ function LoginForm () {
     })
     try {
       const response = await rawResponse.json()
-      console.log(response)
       if (response.message) {
         setError(response.message)
       } else {

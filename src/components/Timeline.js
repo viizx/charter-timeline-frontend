@@ -45,9 +45,9 @@ class ApexChart extends Component {
         legend: {
           show: true,
           showForSingleSeries: true,
-          customLegendItems: ['Booked', 'Option'],
+          customLegendItems: ['Booked', 'Option', 'Free'],
           markers: {
-            fillColors: ['#f2dbdb', '#c5d8f1']
+            fillColors: ['#f2dbdb', '#c5d8f1', '#dfe5ed']
           }
         }
       }
@@ -74,7 +74,6 @@ class ApexChart extends Component {
                 const root = newSeries[seriesIndex].data[dataPointIndex]
                 const fromDate = new Date(root.y[0]).toLocaleDateString('en-UK', options)
                 const toDate = new Date(root.y[1]).toLocaleDateString('en-UK', options)
-                console.log(root.from, seriesIndex, dataPointIndex)
                 return `<div class="p-2"><span><p><b>From:</b> ${root.from}, ${fromDate}</p><p><b>To:</b> ${root.to}, ${toDate}</p></span></div>`
               }
             }

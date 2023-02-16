@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Read = ({ reservations }) => {
-  console.log(reservations)
   const options = { year: 'numeric', month: 'short', day: 'numeric' }
   const [searchTerm, setSearchTerm] = useState('')
   const [searchFromDate, setSearchFromDate] = useState('')

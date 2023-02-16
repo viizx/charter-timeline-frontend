@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 const Edit = (props) => {
-  console.log(props)
   const { id } = useParams()
   const [isPending, setIsPending] = useState(false)
 
@@ -112,6 +111,7 @@ const Edit = (props) => {
                 <option defaultValue="">Select your option</option>
                 <option value="#f2dbdb">Booked</option>
                 <option value="#c5d8f1">Option</option>
+                <option value="#dfe5ed">Free</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
