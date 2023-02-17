@@ -111,7 +111,7 @@ const Edit = (props) => {
                 <option defaultValue="">Select your option</option>
                 <option value="#f2dbdb">Booked</option>
                 <option value="#c5d8f1">Option</option>
-                <option value="#dfe5ed">Free</option>
+                <option value="#e0e8df">Available</option>
               </select>
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
