@@ -61,7 +61,7 @@ function Fleet ({ user, ships }) {
               <div className="grid grid-cols-6">
                 <div className="col-span-5">
                   <input
-                    placeholder="Add new Ship"
+                    placeholder="Add new Yacht"
                     className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     type="text"
                     value={name}

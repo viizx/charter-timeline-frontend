@@ -58,7 +58,7 @@ const Create = ({ user, ships }) => {
                 htmlFor="selectVessel"
                 className="block text-sm font-medium text-gray-700"
               >
-                Ship
+                Yacht
               </label>
               <select
                 className="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
