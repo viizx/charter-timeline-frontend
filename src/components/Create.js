@@ -9,6 +9,7 @@ const Create = ({ user, ships }) => {
   const [ship, setShip] = useState('')
   const [reservation, setReservation] = useState('')
   const [fromLocation, setFromLocation] = useState('')
+  const [broker, setBroker] = useState('')
   const [toLocation, setToLocation] = useState('')
   const [error, setError] = useState(false)
 
@@ -24,13 +25,15 @@ const Create = ({ user, ships }) => {
       y,
       fillColor: reservation,
       from: fromLocation,
-      to: toLocation
+      to: toLocation,
+      broker
     }
 
     setIsPending(true)
 
     const response = await fetch(
       'https://charter-timeline.vercel.app/api/reservation',
+      // 'http://localhost:3000/api/reservation',
       {
         method: 'POST',
         headers: {
@@ -160,11 +163,25 @@ const Create = ({ user, ships }) => {
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </div>
-            <div className="col-span-6 sm:col-span-6 py-2 py-3 text-right ">
+            <div className="col-span-6 sm:col-span-6 py-2 text-right">
+            <label
+                htmlFor="broker"
+                className="block text-sm text-left font-medium text-gray-700"
+              >
+                Broker
+              </label>
+              <input
+                placeholder=""
+                id="broker"
+                type="text"
+                className="mt-1 block w-1/2 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-slate-800 focus:border-slate-800 sm:text-sm"
+                value={broker}
+                onChange={(e) => setBroker(e.target.value)}
+              />
               {!isPending && (
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
+                  className="inline-flex w-2/5 justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
                 >
                   Add Reservation
                 </button>
@@ -173,7 +190,7 @@ const Create = ({ user, ships }) => {
                 <button
                   disabled
                   type="submit"
-                  className="inline-flex justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
+                  className="inline-flex w-2/5 justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800"
                 >
                   Working...
                 </button>

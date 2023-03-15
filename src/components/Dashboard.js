@@ -29,7 +29,6 @@ const Dashboard = ({ user }) => {
       {isPending && <Loading />}
 
       <div className="flex flex-col p-5 m-5 border-gray-400 rounded-md shadow-sm">
-        <h2 className="text-xl items-center">Reservations</h2>
         {reservations && <Read reservations={reservations} />}
       </div>
     </>

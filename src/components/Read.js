@@ -59,8 +59,9 @@ const Read = ({ reservations }) => {
           placeholder="To"
         />
       </div>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-4 gap-6">
         <div className="col-span-1 sm:col-span-1 py-2">Yacht</div>
+        <div className="col-span-1 sm:col-span-1 py-2">Broker</div>
         <div className="col-span-1 sm:col-span-1 py-2">From</div>
         <div className="col-span-1 sm:col-span-1 py-2">To</div>
       </div>
@@ -68,9 +69,12 @@ const Read = ({ reservations }) => {
       {filteredReservations.map((reservation) => (
         <div key={reservation._id}>
           <Link to={`reservations/${reservation._id}`}>
-            <div className="grid grid-cols-3 gap-6 hover:bg-gray-200">
+            <div className="grid grid-cols-4 gap-6 hover:bg-gray-200">
               <div className="col-span-1 sm:col-span-1 py-2">
                 {reservation.x}
+              </div>
+              <div className="col-span-1 sm:col-span-1 py-2">
+                {reservation.broker}
               </div>
               <div className="col-span-1 sm:col-span-1 py-2">
                 {reservation.from},{' '}

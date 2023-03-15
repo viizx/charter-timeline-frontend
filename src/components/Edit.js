@@ -11,7 +11,8 @@ const Edit = (props) => {
     ship: '',
     reservation: '',
     fromLocation: '',
-    toLocation: ''
+    toLocation: '',
+    broker: ''
   })
 
   const setDefaultValues = () => {
@@ -21,7 +22,8 @@ const Edit = (props) => {
       ship: props.reservation.x,
       reservation: props.reservation.fillColor,
       fromLocation: props.reservation.from,
-      toLocation: props.reservation.to
+      toLocation: props.reservation.to,
+      broker: props.reservation.broker
     })
   }
 
@@ -33,7 +35,7 @@ const Edit = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const { startDate, endDate, ship, reservation, fromLocation, toLocation } = formData
+    const { startDate, endDate, ship, reservation, fromLocation, toLocation, broker } = formData
     const y1 = new Date(startDate).getTime()
     const y2 = new Date(endDate).getTime()
     const input = {
@@ -41,7 +43,8 @@ const Edit = (props) => {
       y: [y1, y2],
       fillColor: reservation,
       from: fromLocation,
-      to: toLocation
+      to: toLocation,
+      broker
     }
 
     setIsPending(true)
@@ -159,6 +162,22 @@ const Edit = (props) => {
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 value={formData.toLocation}
                 onChange={(e) => setFormData(prevForm => ({ ...prevForm, toLocation: e.target.value }))}
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-3 py-2">
+              <label
+                htmlFor="toLocation"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Broker
+              </label>
+              <input
+                placeholder=""
+                id="broker"
+                type="text"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={formData.broker}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, broker: e.target.value }))}
               />
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
