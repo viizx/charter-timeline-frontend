@@ -166,6 +166,21 @@ const Edit = (props) => {
             </div>
             <div className="col-span-6 sm:col-span-3 py-2">
               <label
+                htmlFor="endDate"
+                className="block text-sm font-medium text-gray-700"
+              >
+                End Date
+              </label>
+              <input
+                type="date"
+                id="endDate"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={formData.endDate}
+                onChange={(e) => setFormData(prevForm => ({ ...prevForm, endDate: e.target.value }))}
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-3 py-2">
+              <label
                 htmlFor="toLocation"
                 className="block text-sm font-medium text-gray-700"
               >
@@ -178,21 +193,6 @@ const Edit = (props) => {
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 value={formData.broker}
                 onChange={(e) => setFormData(prevForm => ({ ...prevForm, broker: e.target.value }))}
-              />
-            </div>
-            <div className="col-span-6 sm:col-span-3 py-2">
-              <label
-                htmlFor="endDate"
-                className="block text-sm font-medium text-gray-700"
-              >
-                End Date
-              </label>
-              <input
-                type="date"
-                id="endDate"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                value={formData.endDate}
-                onChange={(e) => setFormData(prevForm => ({ ...prevForm, endDate: e.target.value }))}
               />
             </div>
             <div className="col-span-6 sm:col-span-6 py-2 px-4 text-right sm:px-6">
